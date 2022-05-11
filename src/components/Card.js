@@ -12,8 +12,8 @@ function Card(props) {
 	return(
 		<div className="card card--filtered">
 			<div className="card__inner">
-				<img className="card__image-main" width="245" height="192" src={`../images/${props.item.image}.png`} alt="Основной план" />
-				<img className="card__image-plan" width="245" height="192" src={`../images/${props.item.plan}.png`} alt="Чертеж" />
+				<img className="card__image-main" width="245" height="192" src={`./images/${props.item.image}.png`} alt="Основной план" />
+				<img className="card__image-plan" width="245" height="192" src={`./images/${props.item.plan}.png`} alt="Чертеж" />
 				<div className="card__info">
 					<span className="card__title">{props.item.title}</span>
 					<span className="card__location">{props.item.location}</span>
