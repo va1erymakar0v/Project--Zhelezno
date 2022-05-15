@@ -1,9 +1,8 @@
 import React from "react";
-import filter from "./filter";
 
-function Meters(props) {	
-	const [startMeters, setStartMeters] = React.useState(24);
-	const [finalMeters, setFinalMeters] = React.useState(100);
+function Meters({monitorMeters}) {	
+	const [startMeters, setStartMeters] = React.useState(20);
+	const [finalMeters, setFinalMeters] = React.useState(140);
 	
 
 	function handleChange(event) {
@@ -29,7 +28,7 @@ function Meters(props) {
 			if (upperVal < lowerVal + 4) {
 					lowerSlider.value = upperVal - 4;
 					
-					if (lowerVal == lowerSlider.min) {
+					if (lowerVal === lowerSlider.min) {
 						upperSlider.value = 4;
 					}
 			}
@@ -45,7 +44,7 @@ function Meters(props) {
 			if (lowerVal > upperVal - 4) {
 					upperSlider.value = lowerVal + 4;
 					
-					if (upperVal == upperSlider.max) {
+					if (upperVal === upperSlider.max) {
 						lowerSlider.value = Number(upperSlider.max) - 4;
 					}
 
@@ -54,15 +53,15 @@ function Meters(props) {
 			lowerMeters.value = startMeters;
 		};
 
-		document.querySelectorAll(".card").forEach(card => {
-			let meters = Number(card.querySelector(".card__size").innerHTML);
-			if (meters <= upperVal && meters >= lowerVal) {
-				card.classList.add("meters-filtered")
-			} else {
-				card.classList.remove("meters-filtered")
-			}
-		})
-		filter("meters");
+		// document.querySelectorAll(".card").forEach(card => {
+		// 	let meters = Number(card.querySelector(".card__size").innerHTML);
+		// 	if (meters <= upperVal && meters >= lowerVal) {
+		// 		card.classList.add("meters-filtered")
+		// 	} else {
+		// 		card.classList.remove("meters-filtered")
+		// 	}
+		// })
+		monitorMeters(lowerVal, upperVal);
 	}
 
 	return(
@@ -73,8 +72,8 @@ function Meters(props) {
 			<input className="meters-number" type="number" name="high-meters" id="upper-meters" step={1} value={finalMeters} onChange={handleChange} />
 			</div>
 			<span className="multi-range">
-				<input className="meters-input" type="range" min="23" max="140" step={1} id="lower-m" value={startMeters} onChange={handleChange} />
-				<input className="meters-input" type="range" min="23" max="140" step={1} id="upper-m" value={finalMeters} onChange={handleChange} />
+				<input className="meters-input" type="range" min="20" max="140" step={1} id="lower-m" value={startMeters} onChange={handleChange} />
+				<input className="meters-input" type="range" min="20" max="140" step={1} id="upper-m" value={finalMeters} onChange={handleChange} />
 			</span>
 		</section>
 		)

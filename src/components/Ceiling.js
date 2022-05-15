@@ -1,24 +1,18 @@
 import React from "react";
 
-import filter from "./filter";
-
-function Ceiling() {
-	
+function Ceiling({monitorCeiling}) {
 	function handleChange(event) {
-		document.querySelectorAll(".card").forEach(card => {
+		if (event.target.parentElement.parentElement.classList.contains("checked")) {
+			event.target.parentElement.parentElement.classList.remove("checked")
+			monitorCeiling('UNDO');
+		} else {
 			document.querySelectorAll(".Ceiling .filters-item").forEach(item => {
 				item.classList.remove("checked")
 			})
 			event.target.parentElement.parentElement.classList.add("checked")
-			let ceiling = card.querySelector(".card__ceiling").innerHTML;
-			if (event.target.value != ceiling) {
-				card.classList.remove("ceiling-filtered")
-			} else {
-				card.classList.add("ceiling-filtered")
-			}
-		})
-		filter("ceiling");
- }
+			monitorCeiling(event.target.value);
+		}
+	}
 
 	return(
 		<section className="Ceiling">

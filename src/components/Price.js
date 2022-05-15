@@ -1,10 +1,8 @@
 import React from "react";
 
-import filter from "./filter";
-
-function Price(props) {	
-	const [startPrice, setStartPrice] = React.useState(2);
-	const [finalPrice, setFinalPrice] = React.useState(5);
+function Price({monitorPrice}) {	
+	const [startPrice, setStartPrice] = React.useState(1.5);
+	const [finalPrice, setFinalPrice] = React.useState(10.5);
 	
 
 	function handleChange(event) {
@@ -30,7 +28,7 @@ function Price(props) {
 			if (upperVal < lowerVal + 0.04) {
 					lowerSlider.value = upperVal - 0.04;
 					
-					if (lowerVal == lowerSlider.min) {
+					if (lowerVal === lowerSlider.min) {
 						upperSlider.value = 0.04;
 					}
 			}
@@ -46,7 +44,7 @@ function Price(props) {
 			if (lowerVal > upperVal - 0.04) {
 					upperSlider.value = lowerVal + 0.04;
 					
-					if (upperVal == upperSlider.max) {
+					if (upperVal === upperSlider.max) {
 						lowerSlider.value = Number(upperSlider.max) - 0.04;
 					}
 
@@ -55,28 +53,29 @@ function Price(props) {
 			lowerPrice.value = startPrice;
 		};
 
-		document.querySelectorAll(".card").forEach(card => {
-			let lowPrice = Number(card.querySelector(".card__lowest").innerHTML);
-			let highPrice = Number(card.querySelector(".card__highest").innerHTML);
-			if (highPrice <= upperVal*1000000 && lowPrice >= lowerVal*1000000) {
-				card.classList.add("price-filtered")
-			} else {
-				card.classList.remove("price-filtered")
-			}
-		})
-		filter("price");
+		// document.querySelectorAll(".card").forEach(card => {
+		// 	let lowPrice = Number(card.querySelector(".card__lowest").innerHTML);
+		// 	let highPrice = Number(card.querySelector(".card__highest").innerHTML);
+		// 	if (highPrice <= upperVal*1000000 && lowPrice >= lowerVal*1000000) {
+		// 		card.classList.add("price-filtered")
+		// 	} else {
+		// 		card.classList.remove("price-filtered")
+		// 	}
+		// })
+
+		monitorPrice(lowerVal, upperVal);
 	}
 
 	return(
 		<section className="Price">
 			<h3 className="section-title">Стоимость, млн ₽</h3>
 			<div className="price-result">
-			<input className="price-number" type="number" name="low-price" id="lower-price" step={0.01} value={startPrice} onChange={handleChange} />
-			<input className="price-number" type="number" name="high-price" id="upper-price" step={0.01} value={finalPrice} onChange={handleChange} />
+			<input className="price-number" type="number" name="low-price" id="lower-price" step={0.1} value={startPrice} onChange={handleChange} />
+			<input className="price-number" type="number" name="high-price" id="upper-price" step={0.1} value={finalPrice} onChange={handleChange} />
 			</div>
 			<span className="multi-range">
-				<input className="price-input" type="range" min="1.8" max="6.99" step={0.01} id="lower" value={startPrice} onChange={handleChange} />
-				<input className="price-input" type="range" min="1.8" max="6.99" step={0.01} id="upper" value={finalPrice} onChange={handleChange} />
+				<input className="price-input" type="range" min="1.5" max="10.5" step={0.1} id="lower" value={startPrice} onChange={handleChange} />
+				<input className="price-input" type="range" min="1.5" max="10.5" step={0.1} id="upper" value={finalPrice} onChange={handleChange} />
 			</span>
 		</section>
 		)

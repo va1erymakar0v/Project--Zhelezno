@@ -1,20 +1,10 @@
-import React from "react";
+import React from "react";	
 
-import filter from "./filter";
-
-function View() {
-
+function View({monitorView}) {
+	
 	function handleChange(event) {
-		document.querySelectorAll(".card").forEach(card => {
-			let view = card.querySelector(".card__view").innerHTML;
-			if (event.target.value != view) {
-				card.classList.remove("view-filtered")
-			} else {
-				card.classList.add("view-filtered")
-			}
-		})
-		filter("view");
- }
+		monitorView(event.target.value);
+	}
 
 	return(
 		<section className="View">
@@ -22,28 +12,28 @@ function View() {
 			<ul className="filters-list">
 				<li className="filters-item">
 					<label className="view-label">
-						<input className="view-input visually-hidden" type="radio" name="view" value="panoramic" onChange={handleChange} />
+						<input className="view-input visually-hidden" type="radio" name="view" value="Панорамный" onChange={handleChange} />
 						<span className="view-checkbox"></span>
 						Панорамный
 					</label>
 				</li>
 				<li className="filters-item">
 					<label className="view-label">
-						<input className="view-input visually-hidden" type="radio" name="view" value="yard" onChange={handleChange} />
+						<input className="view-input visually-hidden" type="radio" name="view" value="Во двор" onChange={handleChange} />
 						<span className="view-checkbox"></span>
 						Двор
 					</label>
 				</li>
 				<li className="filters-item">
 					<label className="view-label">
-						<input className="view-input visually-hidden" type="radio" name="view" value="park" onChange={handleChange} />
+						<input className="view-input visually-hidden" type="radio" name="view" value="На парк" onChange={handleChange} />
 						<span className="view-checkbox"></span>
 						Парк
 					</label>
 				</li>
 				<li className="filters-item">
 					<label className="view-label">
-						<input className="view-input visually-hidden" type="radio" name="view" value="city" onChange={handleChange} />
+						<input className="view-input visually-hidden" type="radio" name="view" value="На город" onChange={handleChange} />
 						<span className="view-checkbox"></span>
 						Город
 					</label>

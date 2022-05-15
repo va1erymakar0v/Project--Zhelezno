@@ -1,24 +1,19 @@
 import React from "react";
 
-import filter from "./filter";
-
-function Release() {
+function Release({monitorRelease}) {
 	
 	function handleChange(event) {
-		document.querySelectorAll(".card").forEach(card => {
+		if (event.target.parentElement.parentElement.classList.contains("checked")) {
+			event.target.parentElement.parentElement.classList.remove("checked")
+			monitorRelease('UNDO');
+		} else {
 			document.querySelectorAll(".Release .filters-item").forEach(item => {
 				item.classList.remove("checked")
 			})
 			event.target.parentElement.parentElement.classList.add("checked")
-			let release = card.querySelector(".card__release").innerHTML;
-			if (event.target.value != release) {
-				card.classList.remove("release-filtered")
-			} else {
-				card.classList.add("release-filtered")
-			}
-		})
-		filter("release");
- }
+			monitorRelease(event.target.value);
+		}
+	}
 
 	return(
 		<section className="Release">

@@ -1,24 +1,19 @@
 import React from "react";
 
-import filter from "./filter";
+function Project({monitorProject}) {
 
-function Project() {
-
-	function handleChange(event) {
-		document.querySelectorAll(".card").forEach(card => {
+	function handleProjectChange(event) {
+		if (event.target.parentElement.parentElement.classList.contains("checked")) {
+			event.target.parentElement.parentElement.classList.remove("checked")
+			monitorProject('UNDO');
+		} else {
 			document.querySelectorAll(".Project .filters-item").forEach(item => {
 				item.classList.remove("checked")
 			})
 			event.target.parentElement.parentElement.classList.add("checked")
-			let project = card.querySelector(".card__location").innerHTML;
-			if (event.target.value != project) {
-				card.classList.remove("project-filtered")
-			} else {
-				card.classList.add("project-filtered")
-			}
-		})
-		filter("project");
- }
+			monitorProject(event.target.value);
+		}
+	}
 
 	return(
 		<section className="Project">
@@ -26,28 +21,28 @@ function Project() {
 			<ul className="filters-list filters-list--horizontal">
 				<li className="filters-item">
 					<label className="project-label">
-						<input className="project-input visually-hidden" type="radio" name="project" value="ZNAK" onChange={handleChange} />
+						<input className="project-input visually-hidden" type="checkbox" name="ZNAK" value="«ZNAK»" onChange={handleProjectChange} />
 						<img className="project-image" src="./images/projects-logos/znak.png" width="16" height="16" alt="project znak logo"/>
 						ZNAK
 					</label>
 				</li>
 				<li className="filters-item">
 					<label className="project-label">
-						<input className="project-input visually-hidden" type="radio" name="project" value="«Железно на Володарского»" onChange={handleChange} />
+						<input className="project-input visually-hidden" type="checkbox" name="Zhelezno" value="«Железно на Володарского»" onChange={handleProjectChange} />
 						<img className="project-image" src="./images/projects-logos/lomonosov.png" width="16" height="16" alt="project lomonosov logo"/>
 						Железно
 					</label>
 				</li>
 				<li className="filters-item">
 					<label className="project-label">
-						<input className="project-input visually-hidden" type="radio" name="project" value="Васильки" onChange={handleChange} />
+						<input className="project-input visually-hidden" type="checkbox" name="Vasilky" value="«Васильки»" onChange={handleProjectChange} />
 						<img className="project-image" src="./images/projects-logos/vasilki.png" width="16" height="16" alt="project vasilki logo"/>
 						Васильки
 					</label>
 				</li>
 				<li className="filters-item">
 					<label className="project-label">
-						<input className="project-input visually-hidden" type="radio" name="project" value="Ёлки-Park" onChange={handleChange} />
+						<input className="project-input visually-hidden" type="checkbox" name="Yolki" value="«Ёлки-Park»" onChange={handleProjectChange} />
 						<img className="project-image" src="./images/projects-logos/yolki.png" width="16" height="16" alt="project yolki logo"/>
 						Ёлки-Park
 					</label>
