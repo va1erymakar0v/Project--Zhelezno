@@ -25,13 +25,14 @@ function Price({monitorPrice}) {
 			lowerVal = Number(lowerSlider.value);
 			upperVal = Number(upperSlider.value);
 			
-			if (upperVal < lowerVal + 0.04) {
-					lowerSlider.value = upperVal - 0.04;
+			if (upperVal < lowerVal + 0.2) {
+					lowerSlider.value = upperVal - 0.2;
 					
 					if (lowerVal === lowerSlider.min) {
-						upperSlider.value = 0.04;
+						upperSlider.value = 0.2;
 					}
 			}
+			setStartPrice(lowerSlider.value);
 			setFinalPrice(upperVal);
 			upperPrice.value = finalPrice;
 		};
@@ -41,15 +42,16 @@ function Price({monitorPrice}) {
 			lowerVal = Number(lowerSlider.value);
 			upperVal = Number(upperSlider.value);
 			
-			if (lowerVal > upperVal - 0.04) {
-					upperSlider.value = lowerVal + 0.04;
+			if (lowerVal > upperVal - 0.2) {
+					upperSlider.value = lowerVal + 0.2;
 					
 					if (upperVal === upperSlider.max) {
-						lowerSlider.value = Number(upperSlider.max) - 0.04;
+						lowerSlider.value = Number(upperSlider.max) - 0.2;
 					}
 
 			}
 			setStartPrice(lowerVal);
+			setFinalPrice(upperSlider.value);
 			lowerPrice.value = startPrice;
 		};
 

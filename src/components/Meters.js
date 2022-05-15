@@ -32,25 +32,27 @@ function Meters({monitorMeters}) {
 						upperSlider.value = 4;
 					}
 			}
+			setStartMeters(lowerSlider.value);
 			setFinalMeters(upperVal);
-			upperMeters.value = finalMeters;
 		};
 
 
 		lowerSlider.oninput = function() {
 			lowerVal = Number(lowerSlider.value);
 			upperVal = Number(upperSlider.value);
-			
+
 			if (lowerVal > upperVal - 4) {
 					upperSlider.value = lowerVal + 4;
 					
 					if (upperVal === upperSlider.max) {
-						lowerSlider.value = Number(upperSlider.max) - 4;
+						if (lowerVal > upperVal - 4) {
+							lowerSlider.value = Number(upperSlider.max) - 4;
+						}
 					}
 
 			}
-			setStartMeters(lowerVal);
-			lowerMeters.value = startMeters;
+			setStartMeters(lowerSlider.value);
+			setFinalMeters(upperSlider.value);
 		};
 
 		// document.querySelectorAll(".card").forEach(card => {

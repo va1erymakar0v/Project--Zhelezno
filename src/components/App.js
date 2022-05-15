@@ -132,7 +132,6 @@ function App() {
 	
 	const headerFiltersArr = [];
 	for (let filter in filtersState) {
-		console.log(filter)
 		if (filter == 'metersDown') {
 			headerFiltersArr.push([filter, 'площадь от ' + filtersState[filter] + 'м²'])
 		} else if (filter == 'metersUp') {
