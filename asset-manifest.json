@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/Project--Zhelezno/static/css/main.b705d628.css",
-    "main.js": "/Project--Zhelezno/static/js/main.f19c022e.js",
+    "main.css": "/Project--Zhelezno/static/css/main.b365f1b8.css",
+    "main.js": "/Project--Zhelezno/static/js/main.31306837.js",
     "static/media/Montserrat-SemiBold.ttf": "/Project--Zhelezno/static/media/Montserrat-SemiBold.04af9a9e62bb4c47bd55.ttf",
     "static/media/Montserrat-Medium.ttf": "/Project--Zhelezno/static/media/Montserrat-Medium.3a0917345468c959207a.ttf",
     "static/media/Montserrat-Regular.ttf": "/Project--Zhelezno/static/media/Montserrat-Regular.ac98a5f5ca71180fe293.ttf",
     "index.html": "/Project--Zhelezno/index.html",
-    "main.b705d628.css.map": "/Project--Zhelezno/static/css/main.b705d628.css.map",
-    "main.f19c022e.js.map": "/Project--Zhelezno/static/js/main.f19c022e.js.map"
+    "main.b365f1b8.css.map": "/Project--Zhelezno/static/css/main.b365f1b8.css.map",
+    "main.31306837.js.map": "/Project--Zhelezno/static/js/main.31306837.js.map"
   },
   "entrypoints": [
-    "static/css/main.b705d628.css",
-    "static/js/main.f19c022e.js"
+    "static/css/main.b365f1b8.css",
+    "static/js/main.31306837.js"
   ]
 }
